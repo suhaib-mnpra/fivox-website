@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+@theme {
+  --color-slate-950: #0a0a0c;
+  --color-enterprise-charcoal: #141417;
+  --color-gray-300: #e2e2e5;
+  --color-blue-600: #1d4ed8;
+  --color-cyan-400: #06b6d4;
+
+  --font-sans: var(--font-inter);
+}
+
+@layer base {
+  :root {
+    --background: #0a0a0c;
+    --foreground: #e2e2e5;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  /* Subtle mesh overlay for texture */
+  background-image: radial-gradient(circle at 50% 0%, rgba(29, 78, 216, 0.08) 0%, transparent 60%);
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a0c;
+}
+::-webkit-scrollbar-thumb {
+  background: #141417;
+  border: 1px solid #333;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-cyan-400);
+}
+
+.glass-panel {
+  background: rgba(20, 20, 23, 0.6);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Glitch Image Hover Effect */
+.glitch-hover::before, .glitch-hover::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: inherit;
+  opacity: 0;
+  z-index: 10;
+  pointer-events: none;
+}
+.glitch-hover:hover::before {
+  opacity: 0.8;
+  animation: glitch-anim 0.3s cubic-bezier(.25, .46, .45, .94) both infinite;
+  background-color: rgba(6, 182, 212, 0.2);
+  mix-blend-mode: screen;
+}
+.glitch-hover:hover::after {
+  opacity: 0.8;
+  animation: glitch-anim-2 0.3s cubic-bezier(.25, .46, .45, .94) reverse both infinite;
+  background-color: rgba(29, 78, 216, 0.2);
+  mix-blend-mode: screen;
+}
+
+@keyframes glitch-anim {
+  0% { clip-path: polygon(0 2%, 100% 2%, 100% 5%, 0 5%); transform: translate(-2px, 2px); }
+  20% { clip-path: polygon(0 15%, 100% 15%, 100% 15%, 0 15%); transform: translate(2px, -2px); }
+  40% { clip-path: polygon(0 10%, 100% 10%, 100% 20%, 0 20%); transform: translate(-2px, 2px); }
+  60% { clip-path: polygon(0 1%, 100% 1%, 100% 2%, 0 2%); transform: translate(2px, -2px); }
+  80% { clip-path: polygon(0 33%, 100% 33%, 100% 33%, 0 33%); transform: translate(-2px, 2px); }
+  100% { clip-path: polygon(0 44%, 100% 44%, 100% 44%, 0 44%); transform: translate(2px, -2px); }
+}
+@keyframes glitch-anim-2 {
+  0% { clip-path: polygon(0 25%, 100% 25%, 100% 30%, 0 30%); transform: translate(2px, -2px); }
+  20% { clip-path: polygon(0 3%, 100% 3%, 100% 3%, 0 3%); transform: translate(-2px, 2px); }
+  40% { clip-path: polygon(0 5%, 100% 5%, 100% 20%, 0 20%); transform: translate(2px, -2px); }
+  60% { clip-path: polygon(0 20%, 100% 20%, 100% 20%, 0 20%); transform: translate(-2px, 2px); }
+  80% { clip-path: polygon(0 40%, 100% 40%, 100% 40%, 0 40%); transform: translate(2px, -2px); }
+  100% { clip-path: polygon(0 52%, 100% 52%, 100% 59%, 0 59%); transform: translate(-2px, 2px); }
+}
