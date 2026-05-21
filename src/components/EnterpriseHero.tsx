@@ -34,7 +34,7 @@ function DataWave() {
   return (
     <points ref={meshRef}>
       <bufferGeometry>
-        <bufferAttribute attach="attributes-position" count={count} array={positions} itemSize={3} />
+        <bufferAttribute attach="attributes-position" count={count} args={[positions, 3]} />
       </bufferGeometry>
       <pointsMaterial size={0.04} color="#1d4ed8" transparent opacity={0.6} blending={THREE.AdditiveBlending} />
     </points>
@@ -52,7 +52,7 @@ const containerVariants = {
 
 const itemVariants = {
   hidden: { y: 20, opacity: 0 },
-  visible: { y: 0, opacity: 1, transition: { type: 'spring', stiffness: 100, damping: 20 } }
+  visible: { y: 0, opacity: 1, transition: { type: 'spring' as const, stiffness: 100, damping: 20 } }
 };
 
 // 3. Main Hero Component
