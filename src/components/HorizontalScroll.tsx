@@ -63,7 +63,7 @@ export default function HorizontalScroll() {
 
     if (!section || !scroll) return;
 
-    let ctx = gsap.context(() => {
+    const ctx = gsap.context(() => {
       // Get the width we need to translate by
       const scrollWidth = scroll.scrollWidth - window.innerWidth;
 

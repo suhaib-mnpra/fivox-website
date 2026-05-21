@@ -17,7 +17,7 @@ export default function Footer() {
 
     if (!footer || !text) return;
 
-    let ctx = gsap.context(() => {
+    const ctx = gsap.context(() => {
       // Animate the stroke-width or a clip-path mask to "fill" the text
       gsap.to(text, {
         scrollTrigger: {

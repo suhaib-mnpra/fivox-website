@@ -42,7 +42,7 @@ export default function CyberArsenal() {
     const scroll = scrollRef.current;
     if (!section || !scroll) return;
 
-    let ctx = gsap.context(() => {
+    const ctx = gsap.context(() => {
       const scrollWidth = scroll.scrollWidth - window.innerWidth;
 
       gsap.to(scroll, {
